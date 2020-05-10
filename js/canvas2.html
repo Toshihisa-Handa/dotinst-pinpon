@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>canvas練習</title>
+  <link rel="stylesheet" href="css/canvas.css">
+</head>
+<body>
+  
+<canvas width="600" height="240">
+Canvas not sapported
+<!-- canvasの中に書く文字はブラウザの環境でcanvasが読み込まれなかった際に表示される -->
+
+</canvas>
+
+
+
+
+
+
+
+<script>
+  'use strict';
+  {
+
+   function draw() {
+    const canvas = document.querySelector('canvas');//canvas要素を取得
+    if( typeof canvas.getContext === 'undefined')//ここでやっていることはブラウザがcanvasをサポートしているか
+    //()ないの記述はメソットが定義されているかを調べ、定義されていなければここでreturnを返させ処理を止めている。
+    {
+      return;
+    }
+    const ctx = canvas.getContext('2d');//描画に必要なコンテクストオブジェクトを取得（getContextとはメソッド / 平面描写をする時は('2d')をする。
+    //コンテクストとは絵筆の様なものと覚える（これを使って色を設定したり、描画するから）
+      
+}
+
+   draw();
+
+
+
+
+
+
+
+  }
+</script>
+
+</body>
+</html>

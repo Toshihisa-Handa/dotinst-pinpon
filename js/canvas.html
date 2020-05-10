@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>canvas練習</title>
+  <link rel="stylesheet" href="css/canvas.css">
+</head>
+<body>
+  
+<canvas width="600" height="240">
+Canvas not sapported
+<!-- canvasの中に書く文字はブラウザの環境でcanvasが読み込まれなかった際に表示される -->
+
+</canvas>
+
+
+
+
+
+
+
+<script>
+  'use strict';
+  {
+
+   function draw() {
+    const canvas = document.querySelector('canvas');//canvas要素を取得
+    if( typeof canvas.getContext === 'undefined')//ここでやっていることはブラウザがcanvasをサポートしているか
+    //()ないの記述はメソットが定義されているかを調べ、定義されていなければここでreturnを返させ処理を止めている。
+    {
+      return;
+    }
+    const ctx = canvas.getContext('2d');//描画に必要なコンテクストオブジェクトを取得（getContextとはメソッド / 平面描写をする時は('2d')をする。
+    //コンテクストとは絵筆の様なものと覚える（これを使って色を設定したり、描画するから）
+      
+     // ctx.fillRect(x, y, width, height);を定義（右５０、下に５０進んだ地点から幅、高さ５０の四角を描画している
+     
+     ctx.fillStyle = 'pink';//塗り潰しの色指定
+     ctx.fillRect(50, 50, 50, 50);
+     ctx.strokeStyle='#f00';//枠線の色を指定（色の指定は対象の線や塗り潰しより上で定義しないと反応しない）
+     ctx.lineWidth =8;//pxは不要
+     ctx.lineJoin = 'round';// lineJoinは線が繋がる部分の描画をいろいろ指定可能
+     ctx.lineJoin = 'bevel';//角を斜めにして面取りしてる
+     ctx.strokeRect(50, 50, 50, 50);
+
+     //注意点上でctx.〇〇で設定した内容は以降の描画にも反映される。
+     //基本後から描画した図形が上に来る
+     //変更したい場合は都度記述が必要
+     ctx.fillStyle ='skyblue'
+     ctx.fillRect(70, 70, 70, 70);
+     ctx.strokeRect(70, 70, 70, 70);
+
+
+     //fillRectは塗り潰された四角
+     //strokeRectは枠だけの四角
+}
+
+   draw();
+
+
+
+
+
+
+
+  }
+</script>
+
+</body>
+</html>
