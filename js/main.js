@@ -87,6 +87,10 @@ $(function(){
         //ここで〜パドルの右端となる
             this.vy *= -1//パドルに当たったらボールを反転させ、上に跳ね返す記述
             score++;//パドルに当たった時スコアを１増やす記述
+            if(score %3 === 0){//scoreが３点入ったら（3の商の値が0の時）
+              this.vx *= 1.2;//ボールのスピードを1.２倍にする
+              paddle.w *= 0.9;//パドルの幅を0.9倍にする
+            }
           }
       
     }
@@ -114,6 +118,10 @@ $(function(){
 
   };
 
+  function rand(min, max) {//ボールの出現位置をランダムにする為のminとmaxの間の整数値を作る関数を設定
+     return Math.floor(Math.random()* (max - min + 1)) + min;
+  }
+
 
    function init() {//ゲームの初期化処理をinitで定義
 
@@ -125,7 +133,10 @@ $(function(){
           myPaddle = new Paddle(100, 10);//Paddleの後にnewをつけて作るとPaddleの性質を持ったオブジェクトが作られ、
                                         //myPaddleに入れてくれる ←どういう意味？？？
         //ボールのクラス生成
-          myBall = new Ball(100, 100, 5, 5, 6);//Ballの性質を持つオブジェクトをnewで作成。
+          // myBall = new Ball(100, 100, 5, 5, 6);//Ballの性質を持つオブジェクトをnewで作成。基本形の記述
+          myBall = new Ball(rand(50, 250), rand(10, 80), rand(3, 8),rand(3, 8), 6);//Ballの性質を持つオブジェクトをnewで作成。ボールの出現位置をランダムに
+
+          //ボールの出現の記述を（）内でしている。左から出現のx座標、y座標、x方向の速度、y方向の速度、ボールの半径
 
         //スコアラベルのクラス生成
           scoreLabel = new Label(10, 25);//ここの値が文字の開始位置になる
